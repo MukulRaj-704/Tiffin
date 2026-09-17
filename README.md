@@ -20,7 +20,7 @@ source myenv/bin/activate
 ### 3. Install backend dependencies
 
 ```bash
-pip install Django djangorestframework djangorestframework-simplejwt django-cors-headers psycopg2-binary python-dotenv
+pip install -r requirements.txt
 ```
 
 ### 4. Apply Django migrations
