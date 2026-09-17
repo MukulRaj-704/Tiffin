@@ -8,6 +8,14 @@ export const login = async (username, password) => {
   return response.data;
 };
 
+export const register = async (user) => {
+  const response = await api.post('/auth/register/', {
+    ...user,
+    role: 'CUSTOMER',
+  });
+  return response.data;
+};
+
 export const getCurrentUser = async () => {
   const response = await api.get('/auth/me/');
   return response.data;

@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { login } from '../services/authService';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ username: 'admin', password: 'admin123' });
+  const location = useLocation();
+  const [form, setForm] = useState({ username: location.state?.username || '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -50,7 +52,7 @@ export default function LoginPage() {
             <button type="submit" className="primary-button" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </button>
-            <button type="button" className="ghost-button">Create account</button>
+            <button type="button" className="ghost-button" onClick={() => navigate('/register')}>Create account</button>
           </div>
         </form>
       </div>

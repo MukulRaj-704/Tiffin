@@ -29,7 +29,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             username=validated_data["username"],
             email=validated_data.get("email", ""),
             phone=validated_data.get("phone", ""),
-            role=validated_data.get("role", "CUSTOMER"),
+            role="CUSTOMER",
             password=validated_data["password"],
         )
         return user

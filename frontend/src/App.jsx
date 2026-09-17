@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import OwnerDashboardPage from './pages/OwnerDashboardPage';
 import OwnerCustomersPage from './pages/OwnerCustomersPage';
 import OwnerBillingPage from './pages/OwnerBillingPage';
@@ -12,6 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         <Route path="/owner/dashboard" element={<ProtectedRoute><OwnerDashboardPage /></ProtectedRoute>} />
         <Route path="/owner/customers" element={<ProtectedRoute><OwnerCustomersPage /></ProtectedRoute>} />
