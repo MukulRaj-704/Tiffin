@@ -20,3 +20,8 @@ export const getCurrentUser = async () => {
   const response = await api.get('/auth/me/');
   return response.data;
 };
+
+export const logout = () => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+};

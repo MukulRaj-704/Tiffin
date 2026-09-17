@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { fetchCustomers } from '../services/customerService';
 
@@ -11,6 +12,7 @@ const defaultStats = [
 ];
 
 export default function OwnerDashboardPage() {
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
   const [stats, setStats] = useState(defaultStats);
 
@@ -49,7 +51,7 @@ export default function OwnerDashboardPage() {
         <div className="panel">
           <div className="panel-header">
             <h3>Today's Delivery List</h3>
-            <button className="ghost-button">View all</button>
+            <button className="ghost-button" onClick={() => navigate('/owner/customers')}>View all</button>
           </div>
 
           <table className="data-table">
@@ -79,7 +81,7 @@ export default function OwnerDashboardPage() {
         <div className="panel">
           <div className="panel-header">
             <h3>Customer Overview</h3>
-            <button className="ghost-button">Filter</button>
+            <button className="ghost-button" onClick={() => navigate('/owner/customers')}>Filter</button>
           </div>
 
           <table className="data-table">

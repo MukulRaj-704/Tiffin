@@ -230,6 +230,31 @@ button {
   width: 100%;
 }
 
+.customer-detail,
+.profile-panel {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f7fbf8;
+  border: 1px solid #e4eee7;
+  border-radius: 12px;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 24px;
+  margin: 20px 0;
+}
+
+.profile-details dt {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.profile-details dd {
+  margin: 0;
+}
+
 .search-input {
   width: 220px;
   padding: 10px 12px;

@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { customerSummary, billingHistory, calendarDays } from '../data/mockData';
 
 export default function CustomerDashboardPage() {
+  const [pauseNotice, setPauseNotice] = useState('');
+
   return (
     <Layout title="Customer Dashboard">
       <section className="customer-hero panel">
@@ -41,8 +44,15 @@ export default function CustomerDashboardPage() {
         <div className="panel">
           <div className="panel-header">
             <h3>Monthly Calendar</h3>
-            <button className="primary-button">Pause Tiffin</button>
+            <button
+              className="primary-button"
+              onClick={() => setPauseNotice('Pause requests will be available once your active subscription is connected.')}
+            >
+              Pause Tiffin
+            </button>
           </div>
+
+          {pauseNotice && <p className="form-feedback">{pauseNotice}</p>}
 
           <div className="calendar-grid">
             {calendarDays.map((day) => (

@@ -6,6 +6,7 @@ import OwnerCustomersPage from './pages/OwnerCustomersPage';
 import OwnerBillingPage from './pages/OwnerBillingPage';
 import CustomerDashboardPage from './pages/CustomerDashboardPage';
 import ProtectedRoute from './pages/ProtectedRoute';
+import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
 
         <Route path="/customer/dashboard" element={<ProtectedRoute><CustomerDashboardPage /></ProtectedRoute>} />
         <Route path="/customer/calendar" element={<ProtectedRoute><CustomerDashboardPage /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

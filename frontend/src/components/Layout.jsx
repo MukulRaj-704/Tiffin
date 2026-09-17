@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { logout } from '../services/authService';
 
 const navItems = [
   { name: 'Dashboard', path: '/owner/dashboard' },
@@ -8,6 +9,13 @@ const navItems = [
 ];
 
 export default function Layout({ title, children }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
+
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -29,8 +37,8 @@ export default function Layout({ title, children }) {
         <header className="topbar">
           <h1>{title}</h1>
           <div className="topbar-actions">
-            <button className="ghost-button">Profile</button>
-            <button className="primary-button">Logout</button>
+            <button className="ghost-button" onClick={() => navigate('/profile')}>Profile</button>
+            <button className="primary-button" onClick={handleLogout}>Logout</button>
           </div>
         </header>
 

@@ -17,6 +17,7 @@ export default function OwnerCustomersPage() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [feedback, setFeedback] = useState('');
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   useEffect(() => {
     const loadCustomers = async () => {
@@ -106,11 +107,23 @@ export default function OwnerCustomersPage() {
                 <td>{row.name}</td>
                 <td>{row.phone}</td>
                 <td><span className="badge active">ACTIVE</span></td>
-                <td><button className="ghost-button">View</button></td>
+                <td><button className="ghost-button" onClick={() => setSelectedCustomer(row)}>View</button></td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {selectedCustomer && (
+          <div className="customer-detail">
+            <div className="panel-header">
+              <h3>{selectedCustomer.name}</h3>
+              <button className="ghost-button" onClick={() => setSelectedCustomer(null)}>Close</button>
+            </div>
+            <p>Phone: {selectedCustomer.phone}</p>
+            <p>Email: {selectedCustomer.email || 'Not provided'}</p>
+            <p>Address: {selectedCustomer.address || 'Not provided'}</p>
+          </div>
+        )}
       </div>
     </Layout>
   );

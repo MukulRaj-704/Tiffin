@@ -5,6 +5,7 @@ import { fetchBilling, generateBilling } from '../services/billingService';
 export default function OwnerBillingPage() {
   const [bills, setBills] = useState([]);
   const [month, setMonth] = useState('2026-09');
+  const [selectedBill, setSelectedBill] = useState(null);
 
   useEffect(() => {
     const loadBills = async () => {
@@ -61,11 +62,23 @@ export default function OwnerBillingPage() {
                 <td>{bill.billing_month}</td>
                 <td>{bill.total_amount}</td>
                 <td><span className="badge active">{bill.status}</span></td>
-                <td><button className="ghost-button">Open</button></td>
+                <td><button className="ghost-button" onClick={() => setSelectedBill(bill)}>Open</button></td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {selectedBill && (
+          <div className="customer-detail">
+            <div className="panel-header">
+              <h3>Bill details</h3>
+              <button className="ghost-button" onClick={() => setSelectedBill(null)}>Close</button>
+            </div>
+            <p>Customer ID: {selectedBill.customer}</p>
+            <p>Served days: {selectedBill.served_days}</p>
+            <p>Total: {selectedBill.total_amount}</p>
+          </div>
+        )}
       </div>
     </Layout>
   );
