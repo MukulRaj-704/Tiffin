@@ -1,0 +1,12 @@
+myenv/
+db.sqlite3
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.DS_Store
+
+frontend/node_modules/
+frontend/dist/
